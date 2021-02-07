@@ -5,11 +5,13 @@ import React, {
   FormHTMLAttributes,
   HTMLAttributes,
   InputHTMLAttributes,
+  TextareaHTMLAttributes,
   useState,
 } from 'react';
 import { Send } from 'react-feather';
 import TockTheme from 'styles/theme';
 import { prop } from 'styled-tools';
+import TextareaAutosize from 'react-textarea-autosize';
 
 const InputOuterContainer: StyledComponent<
   DetailedHTMLProps<FormHTMLAttributes<HTMLFormElement>, HTMLFormElement>,
@@ -25,14 +27,10 @@ const InputOuterContainer: StyledComponent<
   ${prop<any>('theme.overrides.chatInput.container', '')}
 `;
 
-const Input: StyledComponent<
-  DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>,
-  unknown,
-  TockTheme
-> = styled.input`
+const Textarea: StyledComponent<unknown, unknown, TockTheme> = styled.textarea`
   width: 100%;
-  height: 2em;
   flex: 1;
+  resize: none;
   border-radius: ${prop<any>('theme.sizing.borderRadius')};
   padding: 0.5em 3em 0.5em 1em;
 
@@ -103,14 +101,28 @@ const ChatInput: (props: ChatInputProps) => JSX.Element = ({
     }
   };
 
+  const onKeyEnterPressed = (e: any) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      submit(e);
+    }
+  };
+
   return (
     <InputOuterContainer onSubmit={submit}>
-      <Input
+      {/* <Input
         disabled={disabled}
         className={disabled ? 'disabled-input' : undefined}
         value={value}
         onChange={({ target: { value } }) => setValue(value)}
-      />
+      /> */}
+      <Textarea>
+        <TextareaAutosize
+          minRows={3}
+          maxRows={6}
+          defaultValue="Just a single line..."
+        />
+      </Textarea>
       <Icon>
         <Send size="100%" />
       </Icon>

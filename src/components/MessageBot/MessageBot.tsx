@@ -24,7 +24,7 @@ export const Message: StyledComponent<unknown, unknown, TockTheme> = styled.div`
   background: ${prop<any>('theme.palette.background.bot')};
   color: ${prop<any>('theme.palette.text.bot')};
   padding: 0.5em 1.5em;
-  margin-left: 1em;
+  margin: 0 1em;
   white-space: pre-line;
   border-radius: ${prop<any>('theme.sizing.borderRadius')};
   border-bottom-left-radius: 0;

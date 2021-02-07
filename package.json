@@ -29,6 +29,7 @@
     "linkifyjs": "^2.1.9",
     "polished": "^3.6.5",
     "react-feather": "^2.0.8",
+    "react-textarea-autosize": "^8.3.0",
     "styled-tools": "^1.7.2"
   },
   "devDependencies": {

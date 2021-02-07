@@ -20,7 +20,7 @@ const Message: StyledComponent<unknown, unknown, TockTheme> = styled.div`
   background: ${prop<any>('theme.palette.background.user')};
   color: ${prop<any>('theme.palette.text.user')};
   padding: 0.5em 1.5em;
-  margin-right: 1em;
+  margin: 0 1em;
   border-radius: ${prop<any>('theme.sizing.borderRadius')};
   border-bottom-right-radius: 0;
 

@@ -16,7 +16,7 @@ const Container: StyledComponent<
   font-family: ${prop<any>('theme.typography.fontFamily')};
   font-size: ${prop<any>('theme.typography.fontSize')};
 
-  & > *:first-child {
+  & > *:nth-of-type(2) {
     flex: 1;
     overflow-y: auto;
     ::-webkit-scrollbar {

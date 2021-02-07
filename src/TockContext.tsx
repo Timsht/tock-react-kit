@@ -188,16 +188,26 @@ const TockContext: (props: { children?: ReactNode }) => JSX.Element = ({
 }: {
   children?: ReactNode;
 }) => {
+  const messagesLoaded = () => {
+    if (window.localStorage.getItem('messages')) {
+      return JSON.parse(window.localStorage.getItem('messages')!);
+    }
+    return [];
+  };
+
   const [state, dispatch]: [TockState, Dispatch<TockAction>] = useReducer(
     tockReducer,
     {
       quickReplies: [],
-      messages: [],
+      messages: messagesLoaded(),
       userId: retrieveUserId(),
       loading: false,
       sseInitializing: false,
     },
   );
+
+  window.localStorage.setItem('messages', JSON.stringify(state.messages));
+
   return (
     <TockStateContext.Provider value={state}>
       <TockStateDispatch.Provider value={dispatch}>

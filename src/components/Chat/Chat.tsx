@@ -1,3 +1,4 @@
+import HeaderChat from 'components/HeaderChat/HeaderChat';
 import React, { useEffect } from 'react';
 import useTock, { UseTock } from '../../useTock';
 import ChatInput from '../ChatInput';
@@ -37,6 +38,7 @@ const Chat: (props: ChatProps) => JSX.Element = ({
 
   return (
     <Container>
+      <HeaderChat title="title" subtitle="subtitle" />
       <Conversation
         messages={messages}
         messageDelay={timeoutBetweenMessage}
