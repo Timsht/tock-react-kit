@@ -99,6 +99,7 @@ const ChatInput: (props: ChatInputProps) => JSX.Element = ({
     if (value) {
       onSubmit(value);
       setValue('');
+      alert(value);
     }
   };
 
