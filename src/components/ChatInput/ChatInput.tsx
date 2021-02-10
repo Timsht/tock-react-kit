@@ -96,9 +96,9 @@ const ChatInput: (props: ChatInputProps) => JSX.Element = ({
   const [value, setValue] = useState('');
   const submit = (event: FormEvent<HTMLFormElement>) => {
     alert('hello');
-    alert(value != null);
+    alert(value);
     event.preventDefault();
-    if (value) {
+    if (value != null) {
       onSubmit(value);
       alert('hello2');
       setValue('');
