@@ -100,7 +100,9 @@ const ChatInput: (props: ChatInputProps) => JSX.Element = ({
     event.preventDefault();
     if (value) {
       onSubmit(value);
+      alert('hello2');
       setValue('');
+      alert('value 2 ==> ' + value);
     }
   };
 
