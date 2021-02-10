@@ -10,6 +10,9 @@ export interface ChatProps {
   referralParameter?: string;
   timeoutBetweenMessage?: number;
   widgets?: any;
+  title?: string;
+  subtitle?: string;
+  closeButton?: boolean;
 }
 
 const Chat: (props: ChatProps) => JSX.Element = ({
@@ -17,6 +20,9 @@ const Chat: (props: ChatProps) => JSX.Element = ({
   referralParameter,
   timeoutBetweenMessage = 700,
   widgets = {},
+  title,
+  subtitle,
+  closeButton,
 }: ChatProps) => {
   const {
     messages,
@@ -38,7 +44,7 @@ const Chat: (props: ChatProps) => JSX.Element = ({
 
   return (
     <Container>
-      <HeaderChat title="title" subtitle="subtitle" />
+      <HeaderChat title={title} subtitle={subtitle} closeButton={closeButton} />
       <Conversation
         messages={messages}
         messageDelay={timeoutBetweenMessage}

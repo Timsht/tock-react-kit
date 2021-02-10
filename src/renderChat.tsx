@@ -29,6 +29,8 @@ export const renderChat: (
           referralParameter={referralParameter}
           timeoutBetweenMessage={options.timeoutBetweenMessage}
           widgets={options.widgets}
+          title={options.title}
+          closeButton={options.closeButton}
         />
       </TockContext>
     </ThemeProvider>,

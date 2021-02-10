@@ -25,6 +25,7 @@ import type {
 const ConversationOuterContainer = styled.div`
   display: flex;
   flex-direction: column;
+  flex: 1;
 `;
 
 const ConversationInnerContainer = styled.div`

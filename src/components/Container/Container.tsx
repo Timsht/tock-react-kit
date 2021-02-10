@@ -25,10 +25,6 @@ const Container: StyledComponent<
     }
   }
 
-  & > *:not(:first-child) {
-    flex: unset;
-  }
-
   & * {
     font: inherit;
   }

@@ -31,14 +31,14 @@ const Textarea: StyledComponent<unknown, unknown, TockTheme> = styled.textarea`
   width: 100%;
   flex: 1;
   resize: none;
-  border-radius: ${prop<any>('theme.sizing.borderRadius')};
   padding: 0.5em 3em 0.5em 1em;
-
-  background: ${prop<any>('theme.palette.background.input')};
-  color: ${prop<any>('theme.palette.text.input')};
 
   border: none;
   outline: none;
+
+  border-radius: ${prop<any>('theme.sizing.borderRadius')};
+  background: ${prop<any>('theme.palette.background.input')};
+  color: ${prop<any>('theme.palette.text.input')};
 
   font-family: inherit;
   font-size: inherit;
@@ -59,14 +59,15 @@ const Icon: StyledComponent<
   background: none;
   border: none;
   border-radius: 50%;
+  max-height: 23px;
   right: 0;
   flex: 0;
   cursor: pointer;
   height: 100%;
   width: calc(${prop<any>('theme.typography.fontSize')} * 3);
   & svg {
-    stroke: ${prop<any>('theme.palette.background.bot')};
-    fill: ${prop<any>('theme.palette.text.bot')};
+    stroke: ${prop<any>('theme.palette.background.sender')};
+    fill: ${prop<any>('theme.palette.text.sender')};
   }
 
   & > svg {
@@ -76,8 +77,8 @@ const Icon: StyledComponent<
 
     &:hover,
     &:focus {
-      stroke: ${prop<any>('theme.palette.text.bot')};
-      fill: ${prop<any>('theme.palette.background.bot')};
+      stroke: ${prop<any>('theme.palette.text.sender')};
+      fill: ${prop<any>('theme.palette.background.sender')};
     }
   }
   ${prop<any>('theme.overrides.chatInput.icon', '')}
@@ -116,13 +117,28 @@ const ChatInput: (props: ChatInputProps) => JSX.Element = ({
         value={value}
         onChange={({ target: { value } }) => setValue(value)}
       /> */}
-      <Textarea>
-        <TextareaAutosize
-          minRows={3}
-          maxRows={6}
-          defaultValue="Just a single line..."
-        />
-      </Textarea>
+      <TextareaAutosize
+        minRows={1}
+        onKeyDown={onKeyEnterPressed}
+        maxRows={3}
+        onChange={({ target: { value } }) => setValue(value)}
+        name="message"
+        placeholder="Type a message"
+        disabled={disabled}
+        value={value}
+        autoFocus
+        autoComplete="off"
+        style={{
+          width: '100%',
+          flex: 1,
+          resize: 'none',
+          padding: '0.5em 3em 0.5em 1em',
+
+          border: 'none',
+          outline: 'none',
+          borderRadius: '3px',
+        }}
+      />
       <Icon>
         <Send size="100%" />
       </Icon>
