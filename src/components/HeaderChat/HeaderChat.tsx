@@ -1,12 +1,13 @@
 import styled, { StyledComponent } from '@emotion/styled';
-import React, { DetailedHTMLProps, HTMLAttributes, useState } from 'react';
+import React, { DetailedHTMLProps, HTMLAttributes } from 'react';
 import { prop } from 'styled-tools';
 import TockTheme from 'styles/theme';
+import { X } from 'react-feather';
 
 type Props = {
   title?: string;
   subtitle?: string;
-  closeButton?: boolean;
+  closeButton?: (event: React.MouseEvent<HTMLButtonElement>) => void;
   fullScreen?: boolean;
 };
 
@@ -15,6 +16,10 @@ const Header: StyledComponent<
   unknown,
   TockTheme
 > = styled.div`
+  display: grid;
+  grid-template-areas:
+    'title closeButton'
+    'subtitle closeButton';
   background: ${prop<any>('theme.palette.background.bot')};
   background-color: #241768;
   color: white;
@@ -44,12 +49,8 @@ const HeaderChat = ({ title, subtitle, closeButton, fullScreen }: Props) => {
         <span>{subtitle}</span>
       </Titles>
       {closeButton && (
-        <button
-          onClick={() => {
-            useState(!closeButton);
-          }}
-        >
-          x
+        <button onClick={closeButton}>
+          <X />
         </button>
       )}
       {fullScreen && <button>full</button>}

@@ -133,7 +133,6 @@ const ChatInput: (props: ChatInputProps) => JSX.Element = ({
           flex: 1,
           resize: 'none',
           padding: '0.5em 3em 0.5em 1em',
-
           border: 'none',
           outline: 'none',
           borderRadius: '3px',
