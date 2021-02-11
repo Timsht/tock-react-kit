@@ -201,7 +201,7 @@ const useTock: (tockEndPoint: string) => UseTock = (tockEndPoint: string) => {
     })
       .then((res) => res.json())
       .then(handleBotResponseIfSseDisabled)
-      .finally(stopLoading);
+      .then(stopLoading);
   }, []);
 
   const sendReferralParameter: (
