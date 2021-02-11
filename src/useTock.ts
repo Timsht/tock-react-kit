@@ -88,7 +88,6 @@ const useTock: (tockEndPoint: string) => UseTock = (tockEndPoint: string) => {
   };
 
   const stopLoading: () => void = () => {
-    alert('object');
     dispatch({
       type: 'SET_LOADING',
       loading: false,
@@ -146,6 +145,7 @@ const useTock: (tockEndPoint: string) => UseTock = (tockEndPoint: string) => {
   const handleBotResponseIfSseDisabled: (botResponse: any) => void = (
     botResponse: any,
   ) => {
+    alert('object');
     if (!Sse.isEnable()) {
       handleBotResponse(botResponse);
     }
