@@ -205,7 +205,6 @@ const useTock: (tockEndPoint: string) => UseTock = (tockEndPoint: string) => {
   const sendReferralParameter: (
     referralParameter: string,
   ) => void = useCallback((referralParameter: string) => {
-    startLoading();
     fetch(tockEndPoint, {
       body: JSON.stringify({
         ref: referralParameter,
@@ -217,8 +216,7 @@ const useTock: (tockEndPoint: string) => UseTock = (tockEndPoint: string) => {
       },
     })
       .then((res) => res.json())
-      .then(handleBotResponseIfSseDisabled)
-      .then(stopLoading);
+      .then(handleBotResponseIfSseDisabled);
   }, []);
 
   const sendQuickReply: (button: Button) => Promise<void> = (
