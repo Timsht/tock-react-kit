@@ -88,6 +88,7 @@ const useTock: (tockEndPoint: string) => UseTock = (tockEndPoint: string) => {
   };
 
   const stopLoading: () => void = () => {
+    alert('object');
     dispatch({
       type: 'SET_LOADING',
       loading: false,
