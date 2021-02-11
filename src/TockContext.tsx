@@ -206,7 +206,16 @@ const TockContext: (props: { children?: ReactNode }) => JSX.Element = ({
     },
   );
 
-  window.localStorage.setItem('messages', JSON.stringify(state.messages));
+  try {
+    window.localStorage.setItem(
+      'messages',
+      JSON.stringify(
+        state.messages.slice(state.messages.length - 16, state.messages.length),
+      ),
+    );
+  } catch (e) {
+    console.log(e.message);
+  }
 
   return (
     <TockStateContext.Provider value={state}>

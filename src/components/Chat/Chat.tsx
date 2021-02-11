@@ -12,7 +12,7 @@ export interface ChatProps {
   widgets?: any;
   title?: string;
   subtitle?: string;
-  closeButton?: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  closeButton?: (event: React.MouseEvent<HTMLSpanElement>) => void;
 }
 
 const Chat: (props: ChatProps) => JSX.Element = ({

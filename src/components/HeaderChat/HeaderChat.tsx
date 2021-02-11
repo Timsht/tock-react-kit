@@ -7,7 +7,7 @@ import { X } from 'react-feather';
 type Props = {
   title?: string;
   subtitle?: string;
-  closeButton?: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  closeButton?: (event: React.MouseEvent<HTMLSpanElement>) => void;
   fullScreen?: boolean;
 };
 
@@ -16,15 +16,26 @@ const Header: StyledComponent<
   unknown,
   TockTheme
 > = styled.div`
-  display: grid;
-  grid-template-areas:
-    'title closeButton'
-    'subtitle closeButton';
+  display: flex;
+  flex-direction: row;
   background: ${prop<any>('theme.palette.background.bot')};
   background-color: #241768;
   color: white;
   font-size: inherit;
   ${prop<any>('theme.overrides.chatHeader.header', '')}
+
+  & > span {
+    display: flex;
+    cursor: pointer;
+    background-color: #342779;
+    justify-content: center;
+    align-items: center;
+    flex: 0.5;
+  }
+  & > span:hover {
+    background-color: #291a77;
+    color: #a62f2f;
+  }
 `;
 
 const Titles: StyledComponent<
@@ -34,6 +45,7 @@ const Titles: StyledComponent<
 > = styled.div`
   padding: 10px;
   font-size: inherit;
+  flex: 1;
 
   & h4 {
     font-size: 20px;
@@ -49,11 +61,10 @@ const HeaderChat = ({ title, subtitle, closeButton, fullScreen }: Props) => {
         <span>{subtitle}</span>
       </Titles>
       {closeButton && (
-        <button onClick={closeButton}>
+        <span onClick={closeButton}>
           <X />
-        </button>
+        </span>
       )}
-      {fullScreen && <button>full</button>}
     </Header>
   );
 };
