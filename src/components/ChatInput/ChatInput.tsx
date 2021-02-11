@@ -94,14 +94,11 @@ const ChatInput: (props: ChatInputProps) => JSX.Element = ({
   onSubmit,
 }: ChatInputProps): JSX.Element => {
   const [value, setValue] = useState('');
-
-  // Bug Ipad on "onSubmit", stop after exec
   const submit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const message: string = value;
-    setValue('');
     if (value) {
-      onSubmit(message);
+      onSubmit(value);
+      setValue('');
     }
   };
 

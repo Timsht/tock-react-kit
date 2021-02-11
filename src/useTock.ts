@@ -88,12 +88,10 @@ const useTock: (tockEndPoint: string) => UseTock = (tockEndPoint: string) => {
   };
 
   const stopLoading: () => void = () => {
-    alert('1');
     dispatch({
       type: 'SET_LOADING',
       loading: false,
     });
-    alert('2');
   };
 
   const handleBotResponse: (botResponse: any) => void = ({
@@ -220,7 +218,7 @@ const useTock: (tockEndPoint: string) => UseTock = (tockEndPoint: string) => {
     })
       .then((res) => res.json())
       .then(handleBotResponseIfSseDisabled)
-      .finally(stopLoading);
+      .then(stopLoading);
   }, []);
 
   const sendQuickReply: (button: Button) => Promise<void> = (
@@ -255,7 +253,7 @@ const useTock: (tockEndPoint: string) => UseTock = (tockEndPoint: string) => {
     })
       .then((res) => res.json())
       .then(handleBotResponseIfSseDisabled)
-      .finally(stopLoading);
+      .then(stopLoading);
   }
 
   const sendAction: (button: Button) => Promise<void> = (button: Button) => {
