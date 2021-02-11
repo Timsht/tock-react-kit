@@ -50,6 +50,28 @@ const Textarea: StyledComponent<unknown, unknown, TockTheme> = styled.textarea`
   ${prop<any>('theme.overrides.chatInput.input', '')}
 `;
 
+const Input: StyledComponent<
+  DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>,
+  unknown,
+  TockTheme
+> = styled.input`
+  width: 100%;
+  height: 2em;
+  flex: 1;
+  border-radius: ${prop<any>('theme.sizing.borderRadius')};
+  padding: 0.5em 3em 0.5em 1em;
+  background: ${prop<any>('theme.palette.background.input')};
+  color: ${prop<any>('theme.palette.text.input')};
+  border: none;
+  outline: none;
+  font-family: inherit;
+  font-size: inherit;
+  &.disabled-input {
+    background: ${prop<any>('theme.palette.background.inputDisabled')};
+  }
+  ${prop<any>('theme.overrides.chatInput.input', '')}
+`;
+
 const Icon: StyledComponent<
   DetailedHTMLProps<HTMLAttributes<HTMLButtonElement>, HTMLButtonElement>,
   unknown,
@@ -113,12 +135,12 @@ const ChatInput: (props: ChatInputProps) => JSX.Element = ({
 
   return (
     <InputOuterContainer onSubmit={submit}>
-      {/* <Input
+      <Input
         disabled={disabled}
         className={disabled ? 'disabled-input' : undefined}
         value={value}
         onChange={({ target: { value } }) => setValue(value)}
-      /> */}
+      />
       <TextareaAutosize
         minRows={1}
         onKeyDown={onKeyEnterPressed}
