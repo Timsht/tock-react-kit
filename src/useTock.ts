@@ -88,16 +88,17 @@ const useTock: (tockEndPoint: string) => UseTock = (tockEndPoint: string) => {
   };
 
   const stopLoading: () => void = () => {
+    alert('1');
     dispatch({
       type: 'SET_LOADING',
       loading: false,
     });
+    alert('2');
   };
 
   const handleBotResponse: (botResponse: any) => void = ({
     responses,
   }: any) => {
-    alert('1');
     if (Array.isArray(responses) && responses.length > 0) {
       const lastMessage: any = responses[responses.length - 1];
       if (lastMessage.buttons && lastMessage.buttons.length > 0) {
@@ -113,7 +114,6 @@ const useTock: (tockEndPoint: string) => UseTock = (tockEndPoint: string) => {
           quickReplies: [],
         });
       }
-      alert('2');
       dispatch({
         type: 'ADD_MESSAGE',
         messages: responses.map(({ text, card, carousel, widget }: any) => {
@@ -150,7 +150,6 @@ const useTock: (tockEndPoint: string) => UseTock = (tockEndPoint: string) => {
     if (!Sse.isEnable()) {
       handleBotResponse(botResponse);
     }
-    alert('object');
   };
 
   const addMessage: (
